@@ -8,18 +8,15 @@ import java.util.List;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.social.twitter.api.Tweet;
+import org.springframework.social.twitter.api.TweetData;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.connect.TwitterServiceProvider;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @author ericz
@@ -63,11 +60,11 @@ public class Twittercontroller {
 		List<Tweet> retVal;
 		
 		retVal= api.timelineOperations().getHomeTimeline();
+//		retVal.forEach((tweet) -> tweet.getEntities().getHashTags().forEach( (tag) -> System.out.println(tag.getText())) );
 		
-		
-		final String uri = "https://jsonplaceholder.typicode.com/todos/1";
+//		final String uri = "https://jsonplaceholder.typicode.com/todos/1";
 
-	    RestTemplate restTemplate = new RestTemplate();
+//	    RestTemplate restTemplate = new RestTemplate();
 //	    String result = restTemplate.getForObject(uri, String.class);
 	    
 	    
@@ -78,6 +75,24 @@ public class Twittercontroller {
 		
 	}
 	
+	
+	@RequestMapping(value = "/post/{tweet}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Tweet searchPost(@PathVariable final String tweet){
+		TweetData td = new TweetData(tweet);
+		Tweet twit = api.timelineOperations().updateStatus(td);
+		return twit;
+	}
+	
+	@GetMapping("recent_tweets")
+	public List<Tweet> getUserTweets(){
+		return api.timelineOperations().getUserTimeline();
+	}
+	
+	@RequestMapping(value = "/get_user/{user}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Tweet> getSpecificUser(@PathVariable final String user){
+		return api.timelineOperations().getUserTimeline(user);
+		
+	}
 	
 
 }
