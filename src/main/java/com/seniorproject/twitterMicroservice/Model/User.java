@@ -3,6 +3,9 @@
  */
 package com.seniorproject.twitterMicroservice.Model;
 
+import org.springframework.social.oauth1.OAuth1Template;
+import org.springframework.social.twitter.security.TwitterAuthenticationService;
+
 /**
  * @author ericz
  *
@@ -16,6 +19,8 @@ public class User {
 	private String title;
 	
 	private String completed;
+
+	private String jack;
 
 	public int getUserID() {
 		return UserID;
@@ -55,7 +60,11 @@ public class User {
 	}
 	
 	
-	
-	
-	
+//	TwitterAuthenticationService t = new TwitterAuthenticationService("Mnw1qqFn6kV185XFk7TJSvqw5", "5ruiEgIASdp507ZYJPGHz68vJC7rfysmOJhEeNxq0j8hRF3TuQ");
+//	OAuth1Template o = new OAuth1Template("Mnw1qqFn6kV185XFk7TJSvqw5", "5ruiEgIASdp507ZYJPGHz68vJC7rfysmOJhEeNxq0j8hRF3TuQ ", "", "", "");
+//	
+//	public void j() {
+//		t.
+//	}
+//	
 }
