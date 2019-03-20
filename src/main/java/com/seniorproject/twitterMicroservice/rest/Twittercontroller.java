@@ -116,7 +116,7 @@ public class Twittercontroller {
 		return q;
 	}
 	
-	@GetMapping("/test")
+	@GetMapping("/user_home")
 	public List<Tweet> request() {
 		List<Tweet> retVal;
 		
@@ -161,10 +161,10 @@ public class Twittercontroller {
 		
 	}
 	
-	@PostMapping("twitter_login")
-	public String login() throws TwitterException {
-		 twitter2.oauth
-	}
+//	@PostMapping("twitter_login")
+//	public String login() throws TwitterException {
+//		 twitter2.oauth
+//	}
 	
 
 }
