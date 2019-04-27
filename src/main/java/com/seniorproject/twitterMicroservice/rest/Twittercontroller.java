@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.seniorproject.twitterMicroservice.beans.TwitterGetter;
+//import com.seniorproject.twitterMicroservice.beans.TwitterGetter;
 
 import twitter4j.Query;
 import twitter4j.QueryResult;
@@ -48,8 +48,8 @@ public class Twittercontroller {
 //	@Autowired
 //	private Environment env;
 	
-	@Autowired
-	TwitterGetter tg;
+//	@Autowired
+//	TwitterGetter tg;
 	
 	@Autowired
 	public Twittercontroller(@Value("${oauth.consumerKey}")String conKey, @Value("${oauth.consumerSecret}")String conSec
